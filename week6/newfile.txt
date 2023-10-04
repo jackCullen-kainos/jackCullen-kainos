@@ -1,0 +1,1100 @@
+
+
+       _               _              
+   ___| |__   ___  ___| | _______   __
+  / __| '_ \ / _ \/ __| |/ / _ \ \ / /
+ | (__| | | |  __/ (__|   < (_) \ V / 
+  \___|_| |_|\___|\___|_|\_\___/ \_/  
+                                      
+By bridgecrew.io | version: 2.4.37 
+Update available 2.4.37 -> 2.4.39
+Run pip3 install -U checkov to update 
+
+
+terraform scan results:
+
+Passed checks: 12, Failed checks: 16, Skipped checks: 0
+
+Check: CKV_AZURE_138: "Ensures that ACR disables anonymous pulling of images"
+	PASSED for resource: azurerm_container_registry.name
+	File: /acr/main.tf:26-32
+Check: CKV_AZURE_137: "Ensure ACR admin account is disabled"
+	PASSED for resource: azurerm_container_registry.name
+	File: /acr/main.tf:26-32
+Check: CKV_AZURE_163: "Enable vulnerability scanning for container images."
+	PASSED for resource: azurerm_container_registry.name
+	File: /acr/main.tf:26-32
+Check: CKV_AZURE_8: "Ensure Kubernetes Dashboard is disabled"
+	PASSED for resource: azurerm_kubernetes_cluster.k8s
+	File: /aks/main.tf:42-98
+Check: CKV_AZURE_143: "Ensure AKS cluster nodes do not have public IP addresses"
+	PASSED for resource: azurerm_kubernetes_cluster.k8s
+	File: /aks/main.tf:42-98
+Check: CKV_AZURE_7: "Ensure AKS cluster has Network Policy configured"
+	PASSED for resource: azurerm_kubernetes_cluster.k8s
+	File: /aks/main.tf:42-98
+Check: CKV_AZURE_4: "Ensure AKS logging to Azure Monitoring is Configured"
+	PASSED for resource: azurerm_kubernetes_cluster.k8s
+	File: /aks/main.tf:42-98
+Check: CKV_AZURE_169: "Ensure Azure Kubernetes Cluster (AKS) nodes use scale sets"
+	PASSED for resource: azurerm_kubernetes_cluster.k8s
+	File: /aks/main.tf:42-98
+Check: CKV_AZURE_5: "Ensure RBAC is enabled on AKS clusters"
+	PASSED for resource: azurerm_kubernetes_cluster.k8s
+	File: /aks/main.tf:42-98
+Check: CKV_AZURE_183: "Ensure that VNET uses local DNS addresses"
+	PASSED for resource: azurerm_virtual_network.vnet
+	File: /vnet/main.tf:25-30
+Check: CKV_AZURE_182: "Ensure that VNET has at least 2 connected DNS Endpoints"
+	PASSED for resource: azurerm_virtual_network.vnet
+	File: /vnet/main.tf:25-30
+Check: CKV2_AZURE_29: "Ensure AKS cluster has Azure CNI networking enabled"
+	PASSED for resource: azurerm_kubernetes_cluster.k8s
+	File: /aks/main.tf:42-98
+Check: CKV_AZURE_167: "Ensure a retention policy is set to cleanup untagged manifests."
+	FAILED for resource: azurerm_container_registry.name
+	File: /acr/main.tf:26-32
+
+		26 | resource "azurerm_container_registry" "name" {
+		27 |   name = "${var.name}acr2023"
+		28 |   resource_group_name = azurerm_resource_group.acr_resource_group.name
+		29 |   location = azurerm_resource_group.acr_resource_group.location
+		30 |   sku = "Standard"
+		31 |   admin_enabled = false
+		32 | }
+Check: CKV_AZURE_164: "Ensures that ACR uses signed/trusted images"
+	FAILED for resource: azurerm_container_registry.name
+	File: /acr/main.tf:26-32
+
+		26 | resource "azurerm_container_registry" "name" {
+		27 |   name = "${var.name}acr2023"
+		28 |   resource_group_name = azurerm_resource_group.acr_resource_group.name
+		29 |   location = azurerm_resource_group.acr_resource_group.location
+		30 |   sku = "Standard"
+		31 |   admin_enabled = false
+		32 | }
+Check: CKV_AZURE_165: "Ensure geo-replicated container registries to match multi-region container deployments."
+	FAILED for resource: azurerm_container_registry.name
+	File: /acr/main.tf:26-32
+
+		26 | resource "azurerm_container_registry" "name" {
+		27 |   name = "${var.name}acr2023"
+		28 |   resource_group_name = azurerm_resource_group.acr_resource_group.name
+		29 |   location = azurerm_resource_group.acr_resource_group.location
+		30 |   sku = "Standard"
+		31 |   admin_enabled = false
+		32 | }
+Check: CKV_AZURE_166: "Ensure container image quarantine, scan, and mark images verified"
+	FAILED for resource: azurerm_container_registry.name
+	File: /acr/main.tf:26-32
+
+		26 | resource "azurerm_container_registry" "name" {
+		27 |   name = "${var.name}acr2023"
+		28 |   resource_group_name = azurerm_resource_group.acr_resource_group.name
+		29 |   location = azurerm_resource_group.acr_resource_group.location
+		30 |   sku = "Standard"
+		31 |   admin_enabled = false
+		32 | }
+Check: CKV_AZURE_139: "Ensure ACR set to disable public networking"
+	FAILED for resource: azurerm_container_registry.name
+	File: /acr/main.tf:26-32
+
+		26 | resource "azurerm_container_registry" "name" {
+		27 |   name = "${var.name}acr2023"
+		28 |   resource_group_name = azurerm_resource_group.acr_resource_group.name
+		29 |   location = azurerm_resource_group.acr_resource_group.location
+		30 |   sku = "Standard"
+		31 |   admin_enabled = false
+		32 | }
+Check: CKV_AZURE_170: "Ensure that AKS use the Paid Sku for its SLA"
+	FAILED for resource: azurerm_kubernetes_cluster.k8s
+	File: /aks/main.tf:42-98
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV_AZURE_172: "Ensure autorotation of Secrets Store CSI Driver secrets for AKS clusters"
+	FAILED for resource: azurerm_kubernetes_cluster.k8s
+	File: /aks/main.tf:42-98
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV_AZURE_141: "Ensure AKS local admin account is disabled"
+	FAILED for resource: azurerm_kubernetes_cluster.k8s
+	File: /aks/main.tf:42-98
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV_AZURE_115: "Ensure that AKS enables private clusters"
+	FAILED for resource: azurerm_kubernetes_cluster.k8s
+	File: /aks/main.tf:42-98
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV_AZURE_117: "Ensure that AKS uses disk encryption set"
+	FAILED for resource: azurerm_kubernetes_cluster.k8s
+	File: /aks/main.tf:42-98
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV_AZURE_116: "Ensure that AKS uses Azure Policies Add-on"
+	FAILED for resource: azurerm_kubernetes_cluster.k8s
+	File: /aks/main.tf:42-98
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV_AZURE_6: "Ensure AKS has an API Server Authorized IP Ranges enabled"
+	FAILED for resource: azurerm_kubernetes_cluster.k8s
+	File: /aks/main.tf:42-98
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV_AZURE_171: "Ensure AKS cluster upgrade channel is chosen"
+	FAILED for resource: azurerm_kubernetes_cluster.k8s
+	File: /aks/main.tf:42-98
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV_AZURE_168: "Ensure Azure Kubernetes Cluster (AKS) nodes should use a minimum number of 50 pods."
+	FAILED for resource: azurerm_kubernetes_cluster.k8s
+	File: /aks/main.tf:42-98
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV2_AZURE_31: "Ensure VNET subnet is configured with a Network Security Group (NSG)"
+	FAILED for resource: azurerm_subnet.aks-subnet
+	File: /vnet/main.tf:32-37
+
+		32 | resource "azurerm_subnet" "aks-subnet" {
+		33 |   name                 = var.aks-subnet-name
+		34 |   resource_group_name  = data.azurerm_resource_group.rg.name
+		35 |   virtual_network_name = azurerm_virtual_network.vnet.name
+		36 |   address_prefixes        = [var.aks-subnet]
+		37 | }
+
+Check: CKV2_AZURE_31: "Ensure VNET subnet is configured with a Network Security Group (NSG)"
+	FAILED for resource: azurerm_subnet.appgw
+	File: /vnet/main.tf:39-44
+
+		39 | resource "azurerm_subnet" "appgw" {
+		40 |   name                 = var.subnet-appgw-name
+		41 |   resource_group_name  = data.azurerm_resource_group.rg.name
+		42 |   virtual_network_name = azurerm_virtual_network.vnet.name
+		43 |   address_prefixes        = [var.subnet-appgw]
+		44 | }
+kubernetes scan results:
+
+Passed checks: 71, Failed checks: 22, Skipped checks: 0
+
+Check: CKV_K8S_80: "Ensure that the admission control plugin AlwaysPullImages is set"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_113: "Ensure that the --bind-address argument is set to 127.0.0.1"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_34: "Ensure that Tiller (Helm v2) is not deployed"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_33: "Ensure the Kubernetes dashboard is not deployed"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_104: "Ensure that encryption providers are appropriately configured"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_77: "Ensure that the --authorization-mode argument includes RBAC"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_82: "Ensure that the admission control plugin ServiceAccount is set"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_74: "Ensure that the --authorization-mode argument is not set to AlwaysAllow"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_26: "Do not specify hostPort unless absolutely necessary"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_97: "Ensure that the --service-account-key-file argument is set as appropriate"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_114: "Ensure that the --profiling argument is set to false"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_108: "Ensure that the --use-service-account-credentials argument is set to true"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_146: "Ensure that the --hostname-override argument is not set"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_112: "Ensure that the RotateKubeletServerCertificate argument is set to true"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_148: "Ensure that the --tls-cert-file and --tls-private-key-file arguments are set as appropriate"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_27: "Do not expose the docker daemon socket to containers"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_89: "Ensure that the --secure-port argument is not set to 0"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_70: "Ensure that the --token-auth-file argument is not set"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_68: "Ensure that the --anonymous-auth argument is set to false"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_151: "Ensure that the Kubelet only makes use of Strong Cryptographic Ciphers"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_141: "Ensure that the --read-only-port argument is set to 0"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_119: "Ensure that the --peer-cert-file and --peer-key-file arguments are set as appropriate"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_106: "Ensure that the --terminated-pod-gc-threshold argument is set as appropriate"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_143: "Ensure that the --streaming-connection-idle-timeout argument is not set to 0"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_79: "Ensure that the admission control plugin AlwaysAdmit is not set"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_39: "Do not use the CAP_SYS_ADMIN linux capability"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_115: "Ensure that the --bind-address argument is set to 127.0.0.1"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_16: "Container should not be privileged"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_88: "Ensure that the --insecure-port argument is set to 0"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_111: "Ensure that the --root-ca-file argument is set as appropriate"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_19: "Containers should not share the host network namespace"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_84: "Ensure that the admission control plugin PodSecurityPolicy is set"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_116: "Ensure that the --cert-file and --key-file arguments are set as appropriate"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_91: "Ensure that the --audit-log-path argument is set"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_95: "Ensure that the --request-timeout argument is set as appropriate"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_93: "Ensure that the --audit-log-maxbackup argument is set to 10 or as appropriate"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_145: "Ensure that the --make-iptables-util-chains argument is set to true"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_110: "Ensure that the --service-account-private-key-file argument is set as appropriate"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_105: "Ensure that the API Server only makes use of Strong Cryptographic Ciphers"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_144: "Ensure that the --protect-kernel-defaults argument is set to true"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_69: "Ensure that the --basic-auth-file argument is not set"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_100: "Ensure that the --tls-cert-file and --tls-private-key-file arguments are set as appropriate"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_72: "Ensure that the --kubelet-client-certificate and --kubelet-client-key arguments are set as appropriate"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_35: "Prefer using secrets as files over secrets as environment variables"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_75: "Ensure that the --authorization-mode argument includes Node"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_17: "Containers should not share the host process ID namespace"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_18: "Containers should not share the host IPC namespace"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_138: "Ensure that the --anonymous-auth argument is set to false"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_117: "Ensure that the --client-cert-auth argument is set to true"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_25: "Minimize the admission of containers with added capability"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_81: "Ensure that the admission control plugin SecurityContextDeny is set if PodSecurityPolicy is not used"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_102: "Ensure that the --etcd-cafile argument is set as appropriate"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_73: "Ensure that the --kubelet-certificate-authority argument is set as appropriate"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_86: "Ensure that the --insecure-bind-address argument is not set"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_85: "Ensure that the admission control plugin NodeRestriction is set"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_99: "Ensure that the --etcd-certfile and --etcd-keyfile arguments are set as appropriate"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_90: "Ensure that the --profiling argument is set to false"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_92: "Ensure that the --audit-log-maxage argument is set to 30 or as appropriate"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_71: "Ensure that the --kubelet-https argument is set to true"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_147: "Ensure that the --event-qps argument is set to 0 or a level which ensures appropriate event capture"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_14: "Image Tag should be fixed - not latest or blank"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_94: "Ensure that the --audit-log-maxsize argument is set to 100 or as appropriate"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_107: "Ensure that the --profiling argument is set to false"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_139: "Ensure that the --authorization-mode argument is not set to AlwaysAllow"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_149: "Ensure that the --rotate-certificates argument is not set to false"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_118: "Ensure that the --auto-tls argument is not set to true"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_83: "Ensure that the admission control plugin NamespaceLifecycle is set"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_96: "Ensure that the --service-account-lookup argument is set to true"
+	PASSED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+Check: CKV_K8S_153: "Prevent All NGINX Ingress annotation snippets. See CVE-2021-25742"
+	PASSED for resource: Ingress.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:35-51
+Check: CKV_K8S_152: "Prevent NGINX Ingress annotation snippets which contain LUA code execution. See CVE-2021-25742"
+	PASSED for resource: Ingress.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:35-51
+Check: CKV_K8S_154: "Prevent NGINX Ingress annotation snippets which contain alias statements See CVE-2021-25742"
+	PASSED for resource: Ingress.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:35-51
+Check: CKV_K8S_21: "The default namespace should not be used"
+	FAILED for resource: Service.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:1-14
+
+		1  | apiVersion: v1
+		2  | kind: Service
+		3  | metadata:
+		4  |   name: uber-ui
+		5  | spec:
+		6  |   selector:
+		7  |     app: uber-ui
+		8  |   ports:
+		9  |   - protocol: "TCP"
+		10 |     port: 80
+		11 |     targetPort: 5000
+		12 |   type: LoadBalancer
+		13 | 
+		14 | ---
+
+Check: CKV_K8S_37: "Minimize the admission of containers with capabilities assigned"
+	FAILED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+
+		15 | apiVersion: apps/v1
+		16 | kind: Deployment
+		17 | metadata:
+		18 |   name: uber-ui
+		19 | spec:
+		20 |   selector:
+		21 |     matchLabels:
+		22 |       app: uber-ui
+		23 |   replicas: 2
+		24 |   template:
+		25 |     metadata:
+		26 |       labels:
+		27 |         app: uber-ui
+		28 |     spec:
+		29 |       containers:
+		30 |       - name: uber-ui
+		31 |         image: jjaacr2023.azurecr.io/uberapp:v1
+		32 |         ports:
+		33 |         - containerPort: 5000
+		34 | ---
+
+Check: CKV_K8S_31: "Ensure that the seccomp profile is set to docker/default or runtime/default"
+	FAILED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+
+		15 | apiVersion: apps/v1
+		16 | kind: Deployment
+		17 | metadata:
+		18 |   name: uber-ui
+		19 | spec:
+		20 |   selector:
+		21 |     matchLabels:
+		22 |       app: uber-ui
+		23 |   replicas: 2
+		24 |   template:
+		25 |     metadata:
+		26 |       labels:
+		27 |         app: uber-ui
+		28 |     spec:
+		29 |       containers:
+		30 |       - name: uber-ui
+		31 |         image: jjaacr2023.azurecr.io/uberapp:v1
+		32 |         ports:
+		33 |         - containerPort: 5000
+		34 | ---
+
+Check: CKV_K8S_8: "Liveness Probe Should be Configured"
+	FAILED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+
+		15 | apiVersion: apps/v1
+		16 | kind: Deployment
+		17 | metadata:
+		18 |   name: uber-ui
+		19 | spec:
+		20 |   selector:
+		21 |     matchLabels:
+		22 |       app: uber-ui
+		23 |   replicas: 2
+		24 |   template:
+		25 |     metadata:
+		26 |       labels:
+		27 |         app: uber-ui
+		28 |     spec:
+		29 |       containers:
+		30 |       - name: uber-ui
+		31 |         image: jjaacr2023.azurecr.io/uberapp:v1
+		32 |         ports:
+		33 |         - containerPort: 5000
+		34 | ---
+
+Check: CKV_K8S_12: "Memory requests should be set"
+	FAILED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+
+		15 | apiVersion: apps/v1
+		16 | kind: Deployment
+		17 | metadata:
+		18 |   name: uber-ui
+		19 | spec:
+		20 |   selector:
+		21 |     matchLabels:
+		22 |       app: uber-ui
+		23 |   replicas: 2
+		24 |   template:
+		25 |     metadata:
+		26 |       labels:
+		27 |         app: uber-ui
+		28 |     spec:
+		29 |       containers:
+		30 |       - name: uber-ui
+		31 |         image: jjaacr2023.azurecr.io/uberapp:v1
+		32 |         ports:
+		33 |         - containerPort: 5000
+		34 | ---
+
+Check: CKV_K8S_20: "Containers should not run with allowPrivilegeEscalation"
+	FAILED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+
+		15 | apiVersion: apps/v1
+		16 | kind: Deployment
+		17 | metadata:
+		18 |   name: uber-ui
+		19 | spec:
+		20 |   selector:
+		21 |     matchLabels:
+		22 |       app: uber-ui
+		23 |   replicas: 2
+		24 |   template:
+		25 |     metadata:
+		26 |       labels:
+		27 |         app: uber-ui
+		28 |     spec:
+		29 |       containers:
+		30 |       - name: uber-ui
+		31 |         image: jjaacr2023.azurecr.io/uberapp:v1
+		32 |         ports:
+		33 |         - containerPort: 5000
+		34 | ---
+
+Check: CKV_K8S_15: "Image Pull Policy should be Always"
+	FAILED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+
+		15 | apiVersion: apps/v1
+		16 | kind: Deployment
+		17 | metadata:
+		18 |   name: uber-ui
+		19 | spec:
+		20 |   selector:
+		21 |     matchLabels:
+		22 |       app: uber-ui
+		23 |   replicas: 2
+		24 |   template:
+		25 |     metadata:
+		26 |       labels:
+		27 |         app: uber-ui
+		28 |     spec:
+		29 |       containers:
+		30 |       - name: uber-ui
+		31 |         image: jjaacr2023.azurecr.io/uberapp:v1
+		32 |         ports:
+		33 |         - containerPort: 5000
+		34 | ---
+
+Check: CKV_K8S_13: "Memory limits should be set"
+	FAILED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+
+		15 | apiVersion: apps/v1
+		16 | kind: Deployment
+		17 | metadata:
+		18 |   name: uber-ui
+		19 | spec:
+		20 |   selector:
+		21 |     matchLabels:
+		22 |       app: uber-ui
+		23 |   replicas: 2
+		24 |   template:
+		25 |     metadata:
+		26 |       labels:
+		27 |         app: uber-ui
+		28 |     spec:
+		29 |       containers:
+		30 |       - name: uber-ui
+		31 |         image: jjaacr2023.azurecr.io/uberapp:v1
+		32 |         ports:
+		33 |         - containerPort: 5000
+		34 | ---
+
+Check: CKV_K8S_40: "Containers should run as a high UID to avoid host conflict"
+	FAILED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+
+		15 | apiVersion: apps/v1
+		16 | kind: Deployment
+		17 | metadata:
+		18 |   name: uber-ui
+		19 | spec:
+		20 |   selector:
+		21 |     matchLabels:
+		22 |       app: uber-ui
+		23 |   replicas: 2
+		24 |   template:
+		25 |     metadata:
+		26 |       labels:
+		27 |         app: uber-ui
+		28 |     spec:
+		29 |       containers:
+		30 |       - name: uber-ui
+		31 |         image: jjaacr2023.azurecr.io/uberapp:v1
+		32 |         ports:
+		33 |         - containerPort: 5000
+		34 | ---
+
+Check: CKV_K8S_10: "CPU requests should be set"
+	FAILED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+
+		15 | apiVersion: apps/v1
+		16 | kind: Deployment
+		17 | metadata:
+		18 |   name: uber-ui
+		19 | spec:
+		20 |   selector:
+		21 |     matchLabels:
+		22 |       app: uber-ui
+		23 |   replicas: 2
+		24 |   template:
+		25 |     metadata:
+		26 |       labels:
+		27 |         app: uber-ui
+		28 |     spec:
+		29 |       containers:
+		30 |       - name: uber-ui
+		31 |         image: jjaacr2023.azurecr.io/uberapp:v1
+		32 |         ports:
+		33 |         - containerPort: 5000
+		34 | ---
+
+Check: CKV_K8S_22: "Use read-only filesystem for containers where possible"
+	FAILED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+
+		15 | apiVersion: apps/v1
+		16 | kind: Deployment
+		17 | metadata:
+		18 |   name: uber-ui
+		19 | spec:
+		20 |   selector:
+		21 |     matchLabels:
+		22 |       app: uber-ui
+		23 |   replicas: 2
+		24 |   template:
+		25 |     metadata:
+		26 |       labels:
+		27 |         app: uber-ui
+		28 |     spec:
+		29 |       containers:
+		30 |       - name: uber-ui
+		31 |         image: jjaacr2023.azurecr.io/uberapp:v1
+		32 |         ports:
+		33 |         - containerPort: 5000
+		34 | ---
+
+Check: CKV_K8S_9: "Readiness Probe Should be Configured"
+	FAILED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+
+		15 | apiVersion: apps/v1
+		16 | kind: Deployment
+		17 | metadata:
+		18 |   name: uber-ui
+		19 | spec:
+		20 |   selector:
+		21 |     matchLabels:
+		22 |       app: uber-ui
+		23 |   replicas: 2
+		24 |   template:
+		25 |     metadata:
+		26 |       labels:
+		27 |         app: uber-ui
+		28 |     spec:
+		29 |       containers:
+		30 |       - name: uber-ui
+		31 |         image: jjaacr2023.azurecr.io/uberapp:v1
+		32 |         ports:
+		33 |         - containerPort: 5000
+		34 | ---
+
+Check: CKV_K8S_28: "Minimize the admission of containers with the NET_RAW capability"
+	FAILED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+
+		15 | apiVersion: apps/v1
+		16 | kind: Deployment
+		17 | metadata:
+		18 |   name: uber-ui
+		19 | spec:
+		20 |   selector:
+		21 |     matchLabels:
+		22 |       app: uber-ui
+		23 |   replicas: 2
+		24 |   template:
+		25 |     metadata:
+		26 |       labels:
+		27 |         app: uber-ui
+		28 |     spec:
+		29 |       containers:
+		30 |       - name: uber-ui
+		31 |         image: jjaacr2023.azurecr.io/uberapp:v1
+		32 |         ports:
+		33 |         - containerPort: 5000
+		34 | ---
+
+Check: CKV_K8S_29: "Apply security context to your pods and containers"
+	FAILED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+
+		15 | apiVersion: apps/v1
+		16 | kind: Deployment
+		17 | metadata:
+		18 |   name: uber-ui
+		19 | spec:
+		20 |   selector:
+		21 |     matchLabels:
+		22 |       app: uber-ui
+		23 |   replicas: 2
+		24 |   template:
+		25 |     metadata:
+		26 |       labels:
+		27 |         app: uber-ui
+		28 |     spec:
+		29 |       containers:
+		30 |       - name: uber-ui
+		31 |         image: jjaacr2023.azurecr.io/uberapp:v1
+		32 |         ports:
+		33 |         - containerPort: 5000
+		34 | ---
+
+Check: CKV_K8S_30: "Apply security context to your containers"
+	FAILED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+
+		15 | apiVersion: apps/v1
+		16 | kind: Deployment
+		17 | metadata:
+		18 |   name: uber-ui
+		19 | spec:
+		20 |   selector:
+		21 |     matchLabels:
+		22 |       app: uber-ui
+		23 |   replicas: 2
+		24 |   template:
+		25 |     metadata:
+		26 |       labels:
+		27 |         app: uber-ui
+		28 |     spec:
+		29 |       containers:
+		30 |       - name: uber-ui
+		31 |         image: jjaacr2023.azurecr.io/uberapp:v1
+		32 |         ports:
+		33 |         - containerPort: 5000
+		34 | ---
+
+Check: CKV_K8S_38: "Ensure that Service Account Tokens are only mounted where necessary"
+	FAILED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+
+		15 | apiVersion: apps/v1
+		16 | kind: Deployment
+		17 | metadata:
+		18 |   name: uber-ui
+		19 | spec:
+		20 |   selector:
+		21 |     matchLabels:
+		22 |       app: uber-ui
+		23 |   replicas: 2
+		24 |   template:
+		25 |     metadata:
+		26 |       labels:
+		27 |         app: uber-ui
+		28 |     spec:
+		29 |       containers:
+		30 |       - name: uber-ui
+		31 |         image: jjaacr2023.azurecr.io/uberapp:v1
+		32 |         ports:
+		33 |         - containerPort: 5000
+		34 | ---
+
+Check: CKV_K8S_21: "The default namespace should not be used"
+	FAILED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+
+		15 | apiVersion: apps/v1
+		16 | kind: Deployment
+		17 | metadata:
+		18 |   name: uber-ui
+		19 | spec:
+		20 |   selector:
+		21 |     matchLabels:
+		22 |       app: uber-ui
+		23 |   replicas: 2
+		24 |   template:
+		25 |     metadata:
+		26 |       labels:
+		27 |         app: uber-ui
+		28 |     spec:
+		29 |       containers:
+		30 |       - name: uber-ui
+		31 |         image: jjaacr2023.azurecr.io/uberapp:v1
+		32 |         ports:
+		33 |         - containerPort: 5000
+		34 | ---
+
+Check: CKV_K8S_23: "Minimize the admission of root containers"
+	FAILED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+
+		15 | apiVersion: apps/v1
+		16 | kind: Deployment
+		17 | metadata:
+		18 |   name: uber-ui
+		19 | spec:
+		20 |   selector:
+		21 |     matchLabels:
+		22 |       app: uber-ui
+		23 |   replicas: 2
+		24 |   template:
+		25 |     metadata:
+		26 |       labels:
+		27 |         app: uber-ui
+		28 |     spec:
+		29 |       containers:
+		30 |       - name: uber-ui
+		31 |         image: jjaacr2023.azurecr.io/uberapp:v1
+		32 |         ports:
+		33 |         - containerPort: 5000
+		34 | ---
+
+Check: CKV_K8S_43: "Image should use digest"
+	FAILED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+
+		15 | apiVersion: apps/v1
+		16 | kind: Deployment
+		17 | metadata:
+		18 |   name: uber-ui
+		19 | spec:
+		20 |   selector:
+		21 |     matchLabels:
+		22 |       app: uber-ui
+		23 |   replicas: 2
+		24 |   template:
+		25 |     metadata:
+		26 |       labels:
+		27 |         app: uber-ui
+		28 |     spec:
+		29 |       containers:
+		30 |       - name: uber-ui
+		31 |         image: jjaacr2023.azurecr.io/uberapp:v1
+		32 |         ports:
+		33 |         - containerPort: 5000
+		34 | ---
+
+Check: CKV_K8S_11: "CPU limits should be set"
+	FAILED for resource: Deployment.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+
+		15 | apiVersion: apps/v1
+		16 | kind: Deployment
+		17 | metadata:
+		18 |   name: uber-ui
+		19 | spec:
+		20 |   selector:
+		21 |     matchLabels:
+		22 |       app: uber-ui
+		23 |   replicas: 2
+		24 |   template:
+		25 |     metadata:
+		26 |       labels:
+		27 |         app: uber-ui
+		28 |     spec:
+		29 |       containers:
+		30 |       - name: uber-ui
+		31 |         image: jjaacr2023.azurecr.io/uberapp:v1
+		32 |         ports:
+		33 |         - containerPort: 5000
+		34 | ---
+
+Check: CKV_K8S_21: "The default namespace should not be used"
+	FAILED for resource: Ingress.default.uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:35-51
+
+		35 | apiVersion: networking.k8s.io/v1
+		36 | kind: Ingress
+		37 | metadata:
+		38 |   name: uber-ui
+		39 |   annotations:
+		40 |     kubernetes.io/ingress.class: azure/application-gateway
+		41 | spec:
+		42 |   rules:
+		43 |     - http:
+		44 |         paths:
+		45 |           - path: /
+		46 |             pathType: Prefix
+		47 |             backend:
+		48 |               service:
+		49 |                 name: uber-ui
+		50 |                 port:
+		51 |                   number: 80
+
+Check: CKV2_K8S_6: "Minimize the admission of pods which lack an associated NetworkPolicy"
+	FAILED for resource: Pod.default.uber-ui.app-uber-ui
+	File: /aks/kubernetes_manifest/deployment.yml:15-34
+
+		15 | apiVersion: apps/v1
+		16 | kind: Deployment
+		17 | metadata:
+		18 |   name: uber-ui
+		19 | spec:
+		20 |   selector:
+		21 |     matchLabels:
+		22 |       app: uber-ui
+		23 |   replicas: 2
+		24 |   template:
+		25 |     metadata:
+		26 |       labels:
+		27 |         app: uber-ui
+		28 |     spec:
+		29 |       containers:
+		30 |       - name: uber-ui
+		31 |         image: jjaacr2023.azurecr.io/uberapp:v1
+		32 |         ports:
+		33 |         - containerPort: 5000
+		34 | ---
+
+dockerfile scan results:
+
+Passed checks: 39, Failed checks: 3, Skipped checks: 0
+
+Check: CKV_DOCKER_11: "Ensure From Alias are unique for multistage builds."
+	PASSED for resource: /Docker/Dockerfile.
+	File: /Docker/Dockerfile:1-15
+Check: CKV_DOCKER_7: "Ensure the base image uses a non latest version tag"
+	PASSED for resource: /Docker/Dockerfile.FROM
+	File: /Docker/Dockerfile:1-1
+Check: CKV_DOCKER_5: "Ensure update instructions are not use alone in the Dockerfile"
+	PASSED for resource: /Docker/Dockerfile.
+	File: /Docker/Dockerfile:1-15
+Check: CKV_DOCKER_9: "Ensure that APT isn't used"
+	PASSED for resource: /Docker/Dockerfile.
+	File: /Docker/Dockerfile:1-15
+Check: CKV_DOCKER_10: "Ensure that WORKDIR values are absolute paths"
+	PASSED for resource: /Docker/Dockerfile.
+	File: /Docker/Dockerfile:1-15
+Check: CKV_DOCKER_1: "Ensure port 22 is not exposed"
+	PASSED for resource: /Docker/Dockerfile.
+	File: /Docker/Dockerfile:1-15
+Check: CKV2_DOCKER_9: "Ensure that packages with untrusted or missing GPG signatures are not used by dnf, tdnf, or yum via the '--nogpgcheck' option"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:4-4
+Check: CKV2_DOCKER_9: "Ensure that packages with untrusted or missing GPG signatures are not used by dnf, tdnf, or yum via the '--nogpgcheck' option"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:11-11
+Check: CKV2_DOCKER_8: "Ensure that packages with untrusted or missing signatures are not used by apt-get via the '--allow-unauthenticated' option"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:4-4
+Check: CKV2_DOCKER_8: "Ensure that packages with untrusted or missing signatures are not used by apt-get via the '--allow-unauthenticated' option"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:11-11
+Check: CKV2_DOCKER_10: "Ensure that packages with untrusted or missing signatures are not used by rpm via the '--nodigest', '--nosignature', '--noverify', or '--nofiledigest' options"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:4-4
+Check: CKV2_DOCKER_10: "Ensure that packages with untrusted or missing signatures are not used by rpm via the '--nodigest', '--nosignature', '--noverify', or '--nofiledigest' options"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:11-11
+Check: CKV2_DOCKER_15: "Ensure that the yum and dnf package managers are not configured to disable SSL certificate validation via the 'sslverify' configuration option"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:4-4
+Check: CKV2_DOCKER_15: "Ensure that the yum and dnf package managers are not configured to disable SSL certificate validation via the 'sslverify' configuration option"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:11-11
+Check: CKV2_DOCKER_1: "Ensure that sudo isn't used"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:4-4
+Check: CKV2_DOCKER_1: "Ensure that sudo isn't used"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:11-11
+Check: CKV2_DOCKER_12: "Ensure that certificate validation isn't disabled for npm via the 'NPM_CONFIG_STRICT_SSL' environmnet variable"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:4-4
+Check: CKV2_DOCKER_12: "Ensure that certificate validation isn't disabled for npm via the 'NPM_CONFIG_STRICT_SSL' environmnet variable"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:11-11
+Check: CKV2_DOCKER_6: "Ensure that certificate validation isn't disabled with the NODE_TLS_REJECT_UNAUTHORIZED environmnet variable"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:4-4
+Check: CKV2_DOCKER_6: "Ensure that certificate validation isn't disabled with the NODE_TLS_REJECT_UNAUTHORIZED environmnet variable"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:11-11
+Check: CKV2_DOCKER_5: "Ensure that certificate validation isn't disabled with the PYTHONHTTPSVERIFY environmnet variable"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:4-4
+Check: CKV2_DOCKER_5: "Ensure that certificate validation isn't disabled with the PYTHONHTTPSVERIFY environmnet variable"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:11-11
+Check: CKV2_DOCKER_13: "Ensure that certificate validation isn't disabled for npm or yarn by setting the option strict-ssl to false"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:4-4
+Check: CKV2_DOCKER_13: "Ensure that certificate validation isn't disabled for npm or yarn by setting the option strict-ssl to false"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:11-11
+Check: CKV2_DOCKER_3: "Ensure that certificate validation isn't disabled with wget"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:4-4
+Check: CKV2_DOCKER_3: "Ensure that certificate validation isn't disabled with wget"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:11-11
+Check: CKV2_DOCKER_17: "Ensure that 'chpasswd' is not used to set or remove passwords"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:4-4
+Check: CKV2_DOCKER_17: "Ensure that 'chpasswd' is not used to set or remove passwords"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:11-11
+Check: CKV2_DOCKER_11: "Ensure that the '--force-yes' option is not used, as it disables signature validation and allows packages to be downgraded which can leave the system in a broken or inconsistent state"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:4-4
+Check: CKV2_DOCKER_11: "Ensure that the '--force-yes' option is not used, as it disables signature validation and allows packages to be downgraded which can leave the system in a broken or inconsistent state"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:11-11
+Check: CKV2_DOCKER_4: "Ensure that certificate validation isn't disabled with the pip '--trusted-host' option"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:4-4
+Check: CKV2_DOCKER_14: "Ensure that certificate validation isn't disabled for git by setting the environment variable 'GIT_SSL_NO_VERIFY' to any value"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:4-4
+Check: CKV2_DOCKER_14: "Ensure that certificate validation isn't disabled for git by setting the environment variable 'GIT_SSL_NO_VERIFY' to any value"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:11-11
+Check: CKV2_DOCKER_7: "Ensure that packages with untrusted or missing signatures are not used by apk via the '--allow-untrusted' option"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:4-4
+Check: CKV2_DOCKER_7: "Ensure that packages with untrusted or missing signatures are not used by apk via the '--allow-untrusted' option"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:11-11
+Check: CKV2_DOCKER_2: "Ensure that certificate validation isn't disabled with curl"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:4-4
+Check: CKV2_DOCKER_2: "Ensure that certificate validation isn't disabled with curl"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:11-11
+Check: CKV2_DOCKER_16: "Ensure that certificate validation isn't disabled with pip via the 'PIP_TRUSTED_HOST' environment variable"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:4-4
+Check: CKV2_DOCKER_16: "Ensure that certificate validation isn't disabled with pip via the 'PIP_TRUSTED_HOST' environment variable"
+	PASSED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:11-11
+Check: CKV_DOCKER_2: "Ensure that HEALTHCHECK instructions have been added to container images"
+	FAILED for resource: /Docker/Dockerfile.
+	File: /Docker/Dockerfile:1-15
+
+		1  | FROM --platform=linux/amd64 python:3.10.0
+		2  | 
+		3  | 
+		4  | RUN mkdir /build
+		5  | WORKDIR /build
+		6  | 
+		7  | COPY app /build
+		8  | 
+		9  | COPY app/requirements.txt /build
+		10 | 
+		11 | RUN pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org -r requirements.txt
+		12 | 
+		13 | EXPOSE 5000
+		14 | 
+		15 | CMD [ "python", "app.py" ]
+
+Check: CKV_DOCKER_3: "Ensure that a user for the container has been created"
+	FAILED for resource: /Docker/Dockerfile.
+	File: /Docker/Dockerfile:1-15
+
+		1  | FROM --platform=linux/amd64 python:3.10.0
+		2  | 
+		3  | 
+		4  | RUN mkdir /build
+		5  | WORKDIR /build
+		6  | 
+		7  | COPY app /build
+		8  | 
+		9  | COPY app/requirements.txt /build
+		10 | 
+		11 | RUN pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org -r requirements.txt
+		12 | 
+		13 | EXPOSE 5000
+		14 | 
+		15 | CMD [ "python", "app.py" ]
+
+Check: CKV2_DOCKER_4: "Ensure that certificate validation isn't disabled with the pip '--trusted-host' option"
+	FAILED for resource: /Docker/Dockerfile.RUN
+	File: /Docker/Dockerfile:11-11
+
+		11 | RUN pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org -r requirements.txt
+
+

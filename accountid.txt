@@ -1,0 +1,6 @@
+Listing...
+
+========================AWS Profiles=======================
+PROFILE         TYPE  SOURCE  MFA?  REGION     ACCOUNT     
+KPA-Belfast-23  User  None    No    eu-west-1  138588690193
+default         User  None    No    eu-west-1  Unavailable 
